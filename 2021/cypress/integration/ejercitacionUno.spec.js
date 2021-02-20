@@ -11,7 +11,7 @@ describe('Casos de prueba - Cypress', ()=>{
         cy.visit('https://tienda.movistar.com.ar');
     })
 
-    it.skip('CP001-Validar cuotas en compra de equipo -Cuotas.12 -Equipo.A31', ()=>{
+    it('CP001-Validar cuotas en compra de equipo -Cuotas.18 -Equipo.A31', ()=>{
         const datosTiendaBuilder = new DatosTiendaBuilder().equipoCP001().build();
 
         tiendaPage.getLupaIcono().type(' ');
@@ -34,7 +34,17 @@ describe('Casos de prueba - Cypress', ()=>{
                     softExpect(texto).to.includes('18 cuotas sin interés')
                  })          
             }
-        })        
+        })     
+        
+        cy.url().then((url) => {
+            softExpect(url).to.includes(datosTiendaBuilder.equipo.toLowerCase());
+        })
+
+        tiendaPage.getNombreEquipo().each((nombreEquipo) => {
+            let nombreEquipoText = nombreEquipo.text()
+
+            softExpect(nombreEquipoText).to.includes(datosTiendaBuilder.equipo)
+        })
     })
 
     it('CP002-Aplicar filtro de equipos -Gama.Alta -Memoria Interna.256GB', ()=>{
