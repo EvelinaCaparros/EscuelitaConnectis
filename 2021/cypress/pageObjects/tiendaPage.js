@@ -1,5 +1,5 @@
 export default class tiendaPage {
-	/* 
+    /* 
      * Localizadores
      */
 
@@ -8,17 +8,18 @@ export default class tiendaPage {
 	listaDeEquipos = ".product-name";
 	cuotasTextoSuperior = ".price-installments";
 	cuotasTextoInferior = ".details > ul > :nth-child(1)"
+	nombreEquipoText = '.product-name.desktop'
 
 	filtrarPorDropdown = '[data-target=".filter-dropdown-menu"]'
 	filtrosActivos = '.filter-info.f-active'
 	equiposCards = '.item.last'
 	
-	/* 
+    /* 
      * Constructor
      */
 	constructor() {}
 
-	/* 
+    /* 
      * Metodos de acceso
      */
 	getLupaIcono(){
@@ -51,5 +52,9 @@ export default class tiendaPage {
 
 	getListaDeEquipos(){
 		return cy.get(this.equiposCards);
+	}
+
+	getNombreEquipo(){
+		return cy.get(this.nombreEquipoText);
 	}
 }
